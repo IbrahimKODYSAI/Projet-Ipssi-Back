@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     lastname: {
         type: String,
-        required: true
+        required: true,
     },
     firstname: {
         type: String,
-        required: true
+        required: true,
     },
     username: {
         type: String,
-        required: true
+        required: true,
     },
     avatar: {
         type: String,
@@ -20,19 +20,25 @@ const userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
-        lowercase: true,
-        unique: true
+        unique: true,
+        min: 6
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        min: 4
+    },
+    passwordConfirm: {
+        type: String,
+        required: true,
+        min: 4
     },
     isAdmin: {
         type: Boolean,
         required: false,
         default: false
-    }
-})
+    },
+},{timestamps: true})
 
 
 module.exports = mongoose.model('User', userSchema)

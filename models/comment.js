@@ -5,7 +5,7 @@ const commentSchema = mongoose.Schema({
         type: String,
     },
     author: {
-        type: mongoose.Schema.Types.ObjectId, ref : 'User'
+        type: mongoose.Schema.Types.String, ref : 'User'
     },
     product: {
         type: mongoose.Schema.Types.ObjectId, ref : 'Product'

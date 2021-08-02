@@ -22,11 +22,11 @@ const productSchema = mongoose.Schema({
         type: [String],
         required: true
     },
-    color: {
+    colors: {
         type: [String],
         required: false
     },
-    rating: {
+    ratings: {
         type: [Number],
         required: false
     },
@@ -34,8 +34,8 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
-    categoryId: [{  type: mongoose.Schema.Types.ObjectId, ref : 'Category' }],
+    comments: [{ type: mongoose.Schema.Types.Object, ref: 'Comment' }],
+    categories: [{  type: mongoose.Schema.Types.String, ref : 'Category' }],
 });
 
 module.exports = mongoose.model('Product', productSchema)
