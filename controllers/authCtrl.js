@@ -88,14 +88,79 @@ const getUserProfile = async (req, res) => {
             lastname: foundUser.lastname,
             username: foundUser.username,
             email: foundUser.email,
+            avatar: foundUser.avatar,
+            isAdmin: foundUser.isAdmin
         }
     })
 }
 
+const getAllUser = async (req, res) => {
+    
+    const foundUsers = await User.find()
+
+    try {
+        res.status(200).send(foundUsers)
+    } catch (error) {
+        res.status(400).send(foundUsers)
+    }
+}
+
+const updateUser = async (req, res) => {
+
+    const  userId = req.user._id
+
+    let fileArray = [];
+
+        const file = {
+            fileName: req.file.originalname,
+            filePath: req.file.path,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2)
+        }
+
+        fileArray.push(file)
+
+    const foundUser = await User.findOneAndUpdate(
+        {
+            _id: userId
+        },
+        {
+            // firstname: req.body.firstname,
+            // lastname: req.body.lastname,
+            username: req.body.username,
+            avatar: fileArray,
+            email: req.body.email,
+            // password: req.body.password,
+            // passwordConfirm: req.body.password
+        },
+        {
+            upsert: true, new: true
+        }
+    );
+    try {
+        const savedUpdatedUser = await foundUser.save()
+        res.status(200).send(savedUpdatedUser)
+    }catch (error) {
+        res.status(400).send('user update failed')
+    }
+}
+
+
+const fileSizeFormatter = (bytes, decimal) => {
+    if(bytes ===  0){
+        return '0 Bytes';
+    }
+    const dm = decimal || 2;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
+    const index = Math.floor(Math.log(bytes) / Math.log(1000));
+    return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + '-' + sizes[index]
+}
 
 
 module.exports = {
     register,
     login,
-    getUserProfile
+    getUserProfile,
+    getAllUser,
+    updateUser
 }

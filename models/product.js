@@ -18,9 +18,9 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    image: {
-        type: [String],
-        required: true
+    images:{
+        type: [Object],
+        required: false
     },
     colors: {
         type: [String],
@@ -34,7 +34,7 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    comments: [{ type: mongoose.Schema.Types.Object, ref: 'Comment' }],
+    comments: [{ type: Object, ref: 'Comment' }],
     categories: [{  type: mongoose.Schema.Types.String, ref : 'Category' }],
 });
 
