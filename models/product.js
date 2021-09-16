@@ -27,7 +27,8 @@ const productSchema = mongoose.Schema({
         required: false
     },
     ratings: {
-        type: [Number],
+        type: Array,
+        'default': [0],
         required: false
     },
     stock: {

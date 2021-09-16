@@ -42,6 +42,10 @@ const userSchema = mongoose.Schema({
         required: false,
         default: false
     },
+    cart: {
+        type: Array,
+        required: false
+    }
 },{timestamps: true})
 
 

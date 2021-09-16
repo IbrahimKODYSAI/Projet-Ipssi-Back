@@ -1,14 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
-const app = express();
-const path = require('path');
-
 require('dotenv/config');
 
 
+
+
+const app = express();
+const path = require('path');
+
+
 // connect to db
-mongoose.connect(
+mongoose.connect( 
     process.env.DB_CONNECTION, 
     {
         useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
@@ -21,8 +24,14 @@ mongoose.connect(
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors())
+
+
+app.use(express.json({
+    verify: (req, res, buffer) => req['rawBody'] = buffer,
+}));
+
+
+app.use(cors({ origin: true }))
 
 app.use("/uploads/", express.static(path.join(__dirname, 'uploads')));
 
@@ -30,8 +39,10 @@ app.use("/uploads/", express.static(path.join(__dirname, 'uploads')));
 
 //Import Routes
 const authRoute = require('./routes/auth.js');
-const productRoute = require('./routes/product.js')
-const commentRoute = require('./routes/comment.js')
+const productRoute = require('./routes/product.js');
+const commentRoute = require('./routes/comment.js');
+const webhookRoute = require('./routes/webhook');
+const ordersRoute = require('./routes/orders');
 
 
 
@@ -40,9 +51,13 @@ app.get('/', (req, res) => {
     res.send('we are on home server')
 })
 
+
+
 app.use('/api/user', authRoute);
 app.use('/api/product', productRoute);
 app.use('/api/comment', commentRoute);
+app.use('/webhook', webhookRoute);
+app.use('/api/orders', ordersRoute);
 
 
 

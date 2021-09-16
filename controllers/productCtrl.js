@@ -69,8 +69,8 @@ const createProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
 
-    const foundProducts = await Product.find();
-    console.log(foundProducts)
+    const foundProducts = await Product.find().sort({_id:-1}) ;
+    // console.log(foundProducts)
     try {
         res.status(200).send(foundProducts)
     } catch (error) {
@@ -81,9 +81,9 @@ const getProducts = async (req, res) => {
 const getOneProduct = async  (req, res) => {
 
     const productId = req.body.productId;
-    console.log(productId)
+    // console.log(productId)
     const foundOneProduct = await Product.findById({_id: productId})
-    console.log(foundOneProduct)
+    // console.log(foundOneProduct)
     try {
         res.status(200).send(foundOneProduct)
     } catch (err) {
@@ -99,6 +99,19 @@ const updateProduct = async (req, res) => {
     const userRole = foundUser.isAdmin;
     if(userRole == false) return res.status(400).send('Access denied to non admin user')
 
+    
+    let filesArray = [];
+    // console.log(req.files)
+    req.files.forEach(element => {
+        const file = {
+            fileName: element.originalname,
+            filePath: element.path,
+            fileType: element.mimetype,
+            fileSize: fileSizeFormatter(element.size, 2)
+        }
+        filesArray.push(file)
+    })
+    
     const allSentCategories = await Promise.all(req.body.categories.map((category) => {
         const toReturn = Category.findOneAndUpdate(
             {
@@ -116,18 +129,7 @@ const updateProduct = async (req, res) => {
     const categoriesName = allSentCategories.map(category => {
         return category.categoryName
     })
-
-    let filesArray = [];
-    req.files.forEach(element => {
-        const file = {
-            fileName: element.originalname,
-            filePath: element.path,
-            fileType: element.mimetype,
-            fileSize: fileSizeFormatter(element.size, 2)
-        }
-        filesArray.push(file)
-    })
-
+    // console.log(filesArray)
     const updatedProduct = await Product.findByIdAndUpdate(
 
         { _id: req.body._id},
