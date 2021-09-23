@@ -1,4 +1,4 @@
-# Projet-Ipssi-Back
+# Site E-commerce adminstrable, (coté Back)
 
 BIGOODEAL est une boutique e-commerce administrable fullstack, réalisée coté client sous react.js et coté back sous node.js.
 
