@@ -22,7 +22,7 @@ Le but était aussi de faire un site internet sécurisé ou les utilisateurs n�
 de taper des donnés sensibles comme les cartes de crédit lors d’achats de produits et ou les connexion
 seraient sécurisées.
 
-Title 2 Présentation des fonctionnalités principales du site
+Présentation des fonctionnalités principales du site
 
 ● Page d’accueil : accès directe aux produits avec plusieurs sections, un carrousel mettant
 en images les offres ou soldes à l’affiche du site, la possibilité d'ajouter des produits dans sa
