@@ -1,6 +1,5 @@
 # Projet-Ipssi-Back
 
--DESCRIPTION DU SITE-
 BIGOODEAL est une boutique e-commerce administrable fullstack, réalisée en react.js et node.js.
 Cette boutique à pour but de vendre ses produits via internet et ainsi toucher une clientèle
 plus large afin d’augmenter son chiffre d'affaires. Bigoodeal contient de nombreux produits
