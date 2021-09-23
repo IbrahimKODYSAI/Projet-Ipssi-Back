@@ -8,6 +8,11 @@ REACT-Redux pour un système de centralisation des données et des actions, pour
 un state globale pour tout le site. REACT-Router, REACT-responsive-carousel pour le
 carousel de la page d’accueil. Axios pour les requêtes vers le back, Stripe pour le système de paiement.
 
+Le back est réalisé en Node JS avec Express, la base de donnée est en MongoDb,
+Mongoose pour la gestion de la base donnée.
+Nodemailer pour le système de notification, Mongoose pour la gestion des
+bases, Bcrypt pour les mots de passe. JsonWebToken pour l’authentification.
+
 Durant ce projet mon objectif était de créer un site web
 plaisant pour l’utilisateur que ce soit au niveau de la navigation avec un aspect esthétique,
 moderne, léger et très dynamique ou par le contenu et les options que propose le site.
@@ -17,7 +22,7 @@ Le but était aussi de faire un site internet sécurisé ou les utilisateurs n�
 de taper des donnés sensibles comme les cartes de crédit lors d’achats de produits et ou les connexion
 seraient sécurisées.
 
-Présentation des fonctionnalités principales du site
+Title 2 Présentation des fonctionnalités principales du site
 
 ● Page d’accueil : accès directe aux produits avec plusieurs sections, un carrousel mettant
 en images les offres ou soldes à l’affiche du site, la possibilité d'ajouter des produits dans sa
