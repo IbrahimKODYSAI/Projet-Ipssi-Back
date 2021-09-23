@@ -1,10 +1,12 @@
 # Projet-Ipssi-Back
 
-BIGOODEAL est une boutique e-commerce administrable fullstack, réalisée en react.js et node.js.
-Cette boutique à pour but de vendre ses produits via internet et ainsi toucher une clientèle
-plus large afin d’augmenter son chiffre d'affaires. Bigoodeal contient de nombreux produits
-issus d’un catalogue bien fourni.
+BIGOODEAL est une boutique e-commerce administrable fullstack, réalisée coté client sous react.js et coté back sous node.js.
 
+Le front du site est réalisé en REACT JS pour une fluidité optimale et pour construire des
+interfaces utilisateur dynamique, hautement personnalisables et interactives,
+REACT-Redux pour un système de centralisation des données et des actions, pour avoir
+un state globale pour tout le site. REACT-Router, REACT-responsive-carousel pour le
+carousel de la page d’accueil. Axios pour les requêtes vers le back, Stripe pour le système de paiement.
 
 Durant ce projet mon objectif était de créer un site web
 plaisant pour l’utilisateur que ce soit au niveau de la navigation avec un aspect esthétique,
